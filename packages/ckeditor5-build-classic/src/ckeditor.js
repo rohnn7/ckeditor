@@ -20,6 +20,7 @@ import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
+import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
@@ -48,6 +49,7 @@ ClassicEditor.builtinPlugins = [
 	ImageStyle,
 	ImageToolbar,
 	ImageUpload,
+	ImageInsert,
 	Indent,
 	Link,
 	List,
@@ -75,6 +77,7 @@ ClassicEditor.defaultConfig = {
 			'outdent',
 			'|',
 			'imageUpload',
+			'imageInsert',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
@@ -83,11 +86,34 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	image: {
+		styles: [
+			'alignLeft', 'alignCenter', 'alignRight'
+		],
+
+		resizeOptions: [
+			{
+				name: 'imageResize:original',
+				label: 'Original',
+				value: null
+			},
+			{
+				name: 'imageResize:50',
+				label: '50%',
+				value: '50'
+			},
+			{
+				name: 'imageResize:75',
+				label: '75%',
+				value: '75'
+			}
+		],
+
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
+			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+            '|',
+            'imageResize',
+            '|',
+            'imageTextAlternative'
 		]
 	},
 	table: {
